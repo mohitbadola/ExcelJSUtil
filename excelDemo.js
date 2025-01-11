@@ -13,6 +13,10 @@ async function excelTest() {
       }
     });
   });
+  
+  const cell = worksheet.getCell(4,2);
+  cell.value = 'Iphone';
+  await workbook.xlsx.writeFile("downloads/exceldownloadTest.xlsx");
 }
 
 excelTest();
