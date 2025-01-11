@@ -1,12 +1,18 @@
 const ExcelJs = require("exceljs");
 
-const workbook = new ExcelJs.Workbook();
-workbook.xlsx.readFile("downloads/exceldownloadTest.xlsx").then(function () {
+async function excelTest() {
+  const workbook = new ExcelJs.Workbook();
+  await workbook.xlsx.readFile("downloads/exceldownloadTest.xlsx");
   const worksheet = workbook.getWorksheet("Sheet1");
 
   worksheet.eachRow((row, rowNumber) => {
     row.eachCell((cell, colNumber) => {
-      console.log(cell.value);
+      if(cell.value === 'Apple'){
+        console.log(rowNumber);
+        console.log(colNumber);
+      }
     });
   });
-});
+}
+
+excelTest();
